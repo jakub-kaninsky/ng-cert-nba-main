@@ -1,0 +1,9 @@
+<span>
+      Show past
+      <select #daysSelect (change)="daysChange(daysSelect.value)">
+        <option [value]="numberOfDays" *ngFor="let numberOfDays of numbersOfDays">
+          {{numberOfDays}}
+        </option>
+      </select>
+      days
+</span>

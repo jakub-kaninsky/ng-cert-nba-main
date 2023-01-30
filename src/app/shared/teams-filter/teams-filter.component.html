@@ -1,0 +1,33 @@
+
+<select #conferenceSelect (change)="conferenceChange(conferenceSelect.value)">
+  <option selected value="">
+    Select Conference
+  </option>
+  <option [value]="conference[1]" *ngFor="let conference of conferences">
+    {{conference[0]}} Conference
+  </option>
+</select>
+
+<select #divisionSelect (change)="divisionChange(divisionSelect.value)">
+  <option selected value="">
+    Select Division
+  </option>
+  <option [value]="division" *ngFor="let division of divisions">
+    {{division}} Division
+  </option>
+</select>
+
+<select #teamSelect>
+  <ng-container *ngIf="teams$ | async as teams; else noTeams">
+    <option [value]="team.id" *ngFor="let team of teams">
+      {{team.full_name}}
+    </option>
+  </ng-container>
+  <ng-template #noTeams>
+    <option [value]="">
+      {{teamsLoadingMessage}}
+    </option>
+  </ng-template>
+</select>
+
+<button class="primary" (click)="trackTeam(teamSelect.value)">Track team</button>
